@@ -116,6 +116,10 @@ compareString(char* A, String B)
     return true;
 }
 
+inline bool
+compareString(char* A, char* B)
+{ return compareString(copyString(A), copyString(B)); }
+
 inline String
 splitString(String input, char delim)
 {
