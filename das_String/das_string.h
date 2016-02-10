@@ -1,9 +1,8 @@
-#ifndef DAS_STRING_H
-#define DAS_STRING_H
 // @author Dustin Specht (Spector)
 // This library is going to be my personal impleneation of a string type in cpp
 // Testing for now
-
+#ifndef DAS_STRING_H
+#define DAS_STRING_H
 //TODO: look at doing custom allocations but this is probally already ready
 #include <malloc.h>
 
@@ -30,6 +29,7 @@ struct String
         string = input;
     }
 };
+// COPY STRING
 //We are actually getting each character, not just setting the address
 inline void
 copyString(String input, String output)
@@ -80,7 +80,7 @@ copyString(char* input)
     else { result = {}; }
     return result;
 }
-
+// COMPARE STRING
 inline bool
 compareString(String A, String B)
 {
@@ -119,7 +119,7 @@ compareString(char* A, String B)
 inline bool
 compareString(char* A, char* B)
 { return compareString(copyString(A), copyString(B)); }
-
+// SPLIT STRING
 inline String
 splitString(String input, char delim)
 {
@@ -191,7 +191,24 @@ splitString(char* input, char delim, char* output)
     output[length] = '\0';
 
 }
-
+// REVERSE STRING
+inline String
+reverseString(String input)
+{
+    String result = copyString(input);
+    for(unsigned int i = 0; i < input.length; i++)
+    { result.string[i] = input.string[i]; }
+    return result;
+}
+inline void
+reverseString(String input, String output)
+{
+    for(unsigned int i = 0; i < input.length; i++)
+    { output.string[i] = input.string[i]; }
+}
+inline String reverseString(char* input) { return reverseString(copyString(input)); }
+inline void reverseString(char* input, String output) { return reverseString(copyString(input), output); }
+// Operator Overload +
 inline String
 operator+(String A, String B)
 {
@@ -248,7 +265,7 @@ operator+(char* A, String B)
     else { result = {}; }
     return result;
 }
-
+// Operator Overload +=
 inline String &
 operator+=(String &A, char* B)
 {
@@ -269,7 +286,7 @@ operator+=(String &A, String B)
     A = A + copyString(B);
     return A;
 }
-
+// Operator Overload ==
 inline bool
 operator==(String A, String B)
 {//TODO: do shorthand if here
@@ -288,7 +305,7 @@ operator==(char* A, String B)
     if(compareString(A, B)) return true;
     else return false;
 }
-
+// Operator Overload !=
 inline bool
 operator!=(String A, String B)
 {

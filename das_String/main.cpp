@@ -3,14 +3,11 @@
 // TODO LIST
 // + Look at what functions we need for basic usage of this and add them.
 // + Look at what overloads would be useful for effective use
-// + Add more overloads for SplitString to make it more useful.
-//      like add a option for your own String to be used as output
-//      and output a new string while leaving the rest of the original string in the input string.
 // + Optimize everything (this will be here forever probably)
 #include "das_string.h"
 #include <cstdio>
 
-void main()
+int main()
 {
     // two test strings
     String stringA = { "Hello World!", 12 };
@@ -68,5 +65,5 @@ void main()
     printf("\t%s\n", basicSplitstringB.string);
     printf("\t%s\n\n", basicSplitstringC.string);
     // ------------------------------------------------------------------------
-
+    return 0;
 }
