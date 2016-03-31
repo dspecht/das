@@ -4,6 +4,7 @@
 #ifndef DAS_STRING_H
 #define DAS_STRING_H
 //TODO: look at doing custom allocations but this is probally already ready
+#include <cstdio>
 #include <malloc.h>
 
 inline unsigned int
